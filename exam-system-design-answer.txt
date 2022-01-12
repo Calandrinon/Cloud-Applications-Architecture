@@ -1,0 +1,15 @@
+First and foremost, we know that the platform has to use images and videos, which can hardly be stored inside a relational database. Taking this into consideration, we will choose S3 as our storage infrastructure for images and videos. Storing video data into S3 ensures scalability, availability, security and performance of the data. 
+
+However, we know that the application already uses PostgreSQL, so it can also use RDS alongside S3, perhaps for storing user data such as accounts and other data associated with them.
+
+Knowing that premium users should have the option of making their content available all over the globe, Cloudfront CDN can be chosen for this task. Cloudfront can deliver content with the best possible performance to any node in a global network of edge locations, meaning that the content will be given to the nearest edge location by the CDN. Regardless of where you are in the
+globe, you will get the content cached locally in the edge location.
+
+Another service that can be convenient for our backend part of the application is AWS Lambda, which is a collection of serverless backend services offered by Amazon. This helps us to get rid of provision servers and difficult server management tasks, while the payment is only required for the instance compute time, not the idle instance time. 
+
+We're also going to need a DNS service, which can be offered by AWS Route 53.
+Amazon Route 53 is a highly available and scalable cloud DNS web service. It is designed to give developers and businesses an extremely reliable and cost effective way to route end users to Internet applications by translating names like www.abc.org into IP addresses like 86.25.11.12. So the users' DNS requests will be served by Route 53.
+
+Users must be notified when their footage is ready for work, which should be a quick process, so we can use AWS Elastic Load Balancing, which will distribute the load to multiple EC2 instances as necessary. This increases the fault tolerance of our system, making it more likely for it to continue operationg properly if one of the components of the system fails.
+
+
