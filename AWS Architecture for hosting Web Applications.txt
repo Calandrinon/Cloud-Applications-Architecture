@@ -1,0 +1,173 @@
+﻿@ Subtitles generated with Happy Scribe
+
+Hi, everybody, and welcome to this lesson
+on looking at how we can build AWS
+architectures, and this one is focused on
+how we can build an architecture that's
+going to be used to
+host a Web application.
+
+So building a highly available and
+scalable Web hosting can be a very
+complex and expensive operation.
+
+Sometimes you have dense peak periods and
+wild swings and traffic patterns, which
+can result in low utilization
+of expensive hardware.
+
+Now, AWS provides the reliable, scalable,
+secure, and high performance
+infrastructure required for Web
+applications, while also enabling an
+elastic, scale out and scaled down
+infrastructure to match it costs in real
+time as customer traffic fluctuates
+throughout the day, throughout
+the week or throughout the month.
+
+Now here's a basic diagram of how we can
+develop an architecture of an AWS
+infrastructure which can host a reliable
+and scalable Web application for us.
+
+
+ --- DNS ---
+Now, first and foremost, we're going to
+obviously need a DNS service, which is
+what AWS does for us through Route 53.
+So the users DNS requests again will be
+served by Route 53, which is a highly
+available domain name system
+specifically developed by AWS network.
+The requests are going to be routed to the
+infrastructure running
+in Amazon Web Services.
+
+ --- CDN ---
+Next, we have something
+called Cloudfront.
+Now all of the static, streaming and
+dynamic content will be delivered by the
+Amazon Cloud Front infrastructure, which
+is a global network of edge locations, so
+requests are going to be automatically
+routed to the nearest edge location, so
+content is delivered with the
+best possible performance.
+So regardless of where you are in the
+globe, you will get the content cached
+locally in the edge location, of which AWS
+has around 160 locations
+throughout the globe.
+
+ --- S3 ---
+
+So next, the resources and static content
+used by the Web application are going to
+be stored in an S three bucket, which if
+you guys remember, it's a highly durable
+storage infrastructure designed for
+mission critical and primary data storage.
+Now this will be our best option as
+compared to EBS or EFS, which will not
+really work for a Web application,
+which will be used through CloudFront.
+Because with CloudFront, we can designate
+an S3 bucket as its primary source.
+
+ --- Elastic Load Balancers ---
+
+So in the fourth step, the act requests
+are first handled by the elastic load
+balancing, which automatically distributes
+incoming application traffic among the
+host of EC2 instances that are going
+to be running in your infrastructure.
+Now, as you guys can see, the EC, two
+instances are developed and hosted in a
+multiple availability zone infrastructure.
+
+Now what this is going to do is it's going
+to enable a greater fault tolerance if one
+of the ACS fails or is down, the other one
+can pick up the traffic while the first
+one is brought up to speed by AWS,
+it's basically going to provide a seamless
+load balancing capacity needed in
+response to incoming application traffic.
+
+
+So next on the fifth step, we have Web
+servers again in both of the availability
+zones hosted on EC2 instances.
+
+Now with EC two instances.
+What's recommended is the organization
+developed AMIs or Amazon Machine Images.
+
+So, for example, since they are in an auto
+scaling group, if one of the Web servers
+or EC two instances should fail, the auto
+scaling group is going to
+automatically provision a new one.
+So it's highly recommended that we have
+AMIs for the Web servers with the required
+applications, patches and software
+already preloaded in the AMI.
+
+So an auto scaling group
+provisions a new EC two instance.
+It can just grab that AMI pop it in the EC2 instance and it will be good to go.
+
+And then in the last step we have the core
+of the application service,
+which is the database service.
+To provide the high availability.
+The RDS or the relational database service
+is going to be used in a multi AZ
+deployment where you have a primary master
+RDS, and then you have a standby RDS
+in a different availability zone.
+
+So as you guys can see, this architecture
+provides an overall infrastructure for you
+to operate a Web application in a highly
+available and reliable environment.
+
+You have the cloud front, which provides
+the quick access for the people
+that are accessing it globally.
+
+You have the auto scaling group, which
+distributes the load to multiple EC2
+instances, so if you have peak traffic,
+it'll be balanced accordingly, and then
+you have the elastic load balancing.
+Also for the application service, we need
+the ELB for both the Web servers for the
+traffic and the application servers, so
+the application can actually
+handle the load also.
+
+And then most importantly, this is all
+deployed in a multi AZ environment,
+so you have the fault tolerance.
+
+If one AZ should fail for some reason, the
+other one can pick up the load while the
+first one is brought up to speed by AWS.
+
+So this is a basic set up.
+
+If you want to host a Web application on
+AWS and just as a reminder, the services
+and the architecture that's required is
+the Amazon Route 53,
+the Amazon cloud front.
+The S3  buckets
+The load balancing
+The EC2 instances
+The auto scaling groups 
+The RDS for the
+

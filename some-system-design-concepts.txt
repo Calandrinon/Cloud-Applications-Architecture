@@ -1,0 +1,8 @@
+AWS Architecture for hosting a web app
+- DNS service: the user's request will be routed to the infrastructure ruunning in the amazon web services
+- Cloudfront CDN: all the content will be delivered global network of edge location, which means that the content will be given to the nearest edge location by the CDN. Therefore, the content is delivered with the best possible performance. Regardless of where the user is located on the globe, the content will be cached locally in the edge location.
+- S3: The resources and static content used by the application will be stored in an S3 bucket - a highly durable storage infrastructure.
+- Elastic Load Balancing: distributed the incoming application traffic to the EC2 instances
+
+
+
